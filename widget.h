@@ -19,11 +19,10 @@ public:
     ~Widget();
 
 private:
+    void captureVid();
     Ui::Widget *ui;
     VideoCapture * webCam_;
 
-private slots:
-    void on_captureButton__clicked();
 };
 
 #endif // WIDGET_H
