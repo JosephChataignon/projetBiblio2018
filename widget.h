@@ -3,7 +3,12 @@
 
 #include "opencv2/opencv.hpp"
 #include <QWidget>
+#include "opencv2/video/tracking.hpp"
+#include "opencv2/imgproc/imgproc.hpp"
+#include "opencv2/highgui/highgui.hpp"
+#include <QTimer>
 
+using namespace std;
 using namespace cv;
 
 namespace Ui {
@@ -19,10 +24,11 @@ public:
     ~Widget();
 
 private:
-    void captureVid();
     Ui::Widget *ui;
     VideoCapture * webCam_;
-
+    QTimer* time;
+private slots:
+    void video();
 };
 
 #endif // WIDGET_H

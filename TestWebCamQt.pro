@@ -1,15 +1,23 @@
+#-------------------------------------------------
+#
+# Project created by QtCreator 2016-04-13T15:06:48
+#
+#-------------------------------------------------
+
 QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = projetBiblio2018
+TARGET = TestWebCamQt
 TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        widget.cpp
+        widget.cpp \
+    boule.cpp
 
-HEADERS  += widget.h
+HEADERS  += widget.h \
+    boule.h
 
 FORMS    += widget.ui
 
