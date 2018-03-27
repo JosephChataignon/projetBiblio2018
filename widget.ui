@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>786</width>
-    <height>653</height>
+    <width>346</width>
+    <height>263</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,7 +15,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="boule" name="widget" native="true"/>
+    <widget class="jeuOpenGL" name="jeuAffichage"/>
    </item>
    <item>
     <widget class="QLabel" name="imageLabel_">
@@ -32,10 +32,9 @@
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
-   <class>boule</class>
-   <extends>QWidget</extends>
-   <header>boule.h</header>
-   <container>1</container>
+   <class>jeuOpenGL</class>
+   <extends>QOpenGLWidget</extends>
+   <header>jeuopengl.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

@@ -13,6 +13,7 @@ Widget::Widget(QWidget *parent) :
     time = new QTimer(this);
     connect(time,SIGNAL(timeout()),this,SLOT(video()));
     time->start(20);
+
 }
 
 
