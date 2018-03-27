@@ -72,7 +72,7 @@ Mat gestionCam::imageVideo()
 
         }
         else {
-          //  ui->infoLabel_->setText("Error capturing the frame");
+
         }
 
     }
