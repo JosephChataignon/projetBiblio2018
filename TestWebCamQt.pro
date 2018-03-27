@@ -14,10 +14,12 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         widget.cpp \
-    boule.cpp
+    boule.cpp \
+    gestioncam.cpp
 
 HEADERS  += widget.h \
-    boule.h
+    boule.h \
+    gestioncam.h
 
 FORMS    += widget.ui
 

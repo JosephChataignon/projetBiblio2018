@@ -7,6 +7,7 @@
 #include "opencv2/imgproc/imgproc.hpp"
 #include "opencv2/highgui/highgui.hpp"
 #include <QTimer>
+#include "gestioncam.h"
 
 using namespace std;
 using namespace cv;
@@ -25,8 +26,9 @@ public:
 
 private:
     Ui::Widget *ui;
-    VideoCapture * webCam_;
+    Mat frame;
     QTimer* time;
+    gestionCam *cam;
 private slots:
     void video();
 };
