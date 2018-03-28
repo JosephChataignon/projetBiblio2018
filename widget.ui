@@ -15,7 +15,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="Jeu" name="widgetJeu" native="true"/>
+    <widget class="Jeu" name="widgetJeu"/>
    </item>
    <item>
     <widget class="QLabel" name="imageLabel_">
@@ -33,9 +33,8 @@
  <customwidgets>
   <customwidget>
    <class>Jeu</class>
-   <extends>QWidget</extends>
-   <header location="global">jeu.h</header>
-   <container>1</container>
+   <extends>QOpenGLWidget</extends>
+   <header>jeu.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
