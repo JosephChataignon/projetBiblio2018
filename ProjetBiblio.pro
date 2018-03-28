@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui opengl widgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -12,14 +12,28 @@ TARGET = ProjetBiblio
 TEMPLATE = app
 
 
+# ajout des libs au linker
+win32 {
+    win32-msvc* {
+        LIBS     += opengl32.lib glu32.lib
+    } else {
+        LIBS     += -lopengl32 -lglu32
+    }
+}
+unix {
+        LIBS     += -lGL -lGLU
+}
+
+
+
 SOURCES += main.cpp\
         widget.cpp \
-    boule.cpp \
-    gestioncam.cpp
+    gestioncam.cpp \
+    jeu.cpp
 
 HEADERS  += widget.h \
-    boule.h \
-    gestioncam.h
+    gestioncam.h \
+    jeu.h
 
 FORMS    += widget.ui
 

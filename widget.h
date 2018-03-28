@@ -22,6 +22,8 @@ class Widget : public QWidget
 
 public:
     explicit Widget(QWidget *parent = 0);
+    void setVect(Point v){ vect = v; }
+    cv::Point getVect(){ return vect; }
     ~Widget();
 
 private:
@@ -29,6 +31,8 @@ private:
     Mat frame;
     QTimer* time;
     gestionCam *cam;
+    cv::Point vect;
+
 private slots:
     void video();
 };

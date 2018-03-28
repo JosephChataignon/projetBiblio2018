@@ -67,6 +67,7 @@ Mat gestionCam::imageVideo()
             // Invert Blue and Red color channels
             cvtColor(frame2,frame2,CV_BGR2RGB);
 
+            this->setVect(vect);
             return frame2;
 
 

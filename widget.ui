@@ -15,7 +15,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="boule" name="widget" native="true"/>
+    <widget class="Jeu" name="widgetJeu" native="true"/>
    </item>
    <item>
     <widget class="QLabel" name="imageLabel_">
@@ -32,9 +32,9 @@
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
-   <class>boule</class>
+   <class>Jeu</class>
    <extends>QWidget</extends>
-   <header>boule.h</header>
+   <header location="global">jeu.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

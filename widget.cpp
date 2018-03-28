@@ -8,10 +8,10 @@ Widget::Widget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Widget)
 {
-    cam=new gestionCam();
+    cam = new gestionCam();
     ui->setupUi(this);
     time = new QTimer(this);
-    connect(time,SIGNAL(timeout()),this,SLOT(video()));
+    connect( time, SIGNAL(timeout()), this, SLOT(video()) );
     time->start(20);
 }
 
@@ -25,8 +25,13 @@ Widget::~Widget()
 void Widget::video()
 {
 
-    frame= cam->imageVideo();
+    frame = cam->imageVideo();
+    this->setVect(cam->getVect());
     QImage img= QImage((const unsigned char*)(frame.data),frame.cols,frame.rows,QImage::Format_RGB888);
+
+    ui->widgetJeu->setPos(cam->getVect());
+    ui->widgetJeu->update();
+
     // Display on label
     ui->imageLabel_->setPixmap(QPixmap::fromImage(img));
     // Resize the label to fit the image
