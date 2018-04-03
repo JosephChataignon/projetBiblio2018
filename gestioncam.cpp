@@ -15,8 +15,8 @@ Mat gestionCam::imageVideo()
     if (webCam_->isOpened()) {
         Mat image;
         if (webCam_->read(image)) {   // Capture a frame
-            int frameWidth=640;
-            int frameHeight=480;
+            int frameWidth=320;
+            int frameHeight=240;
             int subImageWidth=100;
             int subImageHeight=100;
             int templateWidth=25;
@@ -27,8 +27,8 @@ Mat gestionCam::imageVideo()
 
             VideoCapture cap=*webCam_; // open the default camera
             Mat frame1,frame2,frameRect1,frameRect2;
-
-
+            cap.set(CV_CAP_PROP_FRAME_WIDTH ,320);
+            cap.set(CV_CAP_PROP_FRAME_HEIGHT ,240);
             // Get frame1
             cap >> frame1;
             // Mirror effect

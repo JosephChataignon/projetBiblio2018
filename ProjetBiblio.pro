@@ -29,11 +29,15 @@ unix {
 SOURCES += main.cpp\
         widget.cpp \
     gestioncam.cpp \
-    jeu.cpp
+    jeu.cpp \
+    brique.cpp \
+    mur.cpp
 
 HEADERS  += widget.h \
     gestioncam.h \
-    jeu.h
+    jeu.h \
+    brique.h \
+    mur.h
 
 FORMS    += widget.ui
 

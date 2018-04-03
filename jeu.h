@@ -7,6 +7,8 @@
 #include "opencv2/opencv.hpp"
 #include <QDebug>
 #include <QColor>
+#include "brique.h"
+#include "mur.h"
 
 class Jeu : public QGLWidget
 {
@@ -35,8 +37,12 @@ protected:
 private:
     int posX;
     int posY;
-
+    std::vector<brique*> tabBrique;
+    std::vector<mur*> tabMur;
     QColor couleur;
+    float posCamX_;
+    float posCamY_;
+    float posCamZ_;
 
 };
 #endif // JEU_H

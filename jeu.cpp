@@ -9,14 +9,26 @@ Jeu::Jeu(QWidget *parent) : QGLWidget(parent) {
     // Reglage de la taille/position
     setFixedSize(700, 300);
     move(QApplication::desktop()->screen()->rect().center() - rect().center());
+    for(int j=0;j<12;j++){
+        for(int i=0;i<10;i++){
+           tabBrique.push_back(new brique(-35.1f+7*i,45-j*3,0));
+        }
+    }
+    tabMur.push_back(new mur(-37,46,0));
+    tabMur.push_back(new mur(35,46,0));
 
-    qInfo() << "posX: "<<posX<<" , posY: "<<posY;
+    qInfo() << tabBrique.size();
+    posCamX_=0;
+    posCamY_=0;
+    posCamZ_=1.1f;
 }
 
 // Fonction d'initialisation
 void Jeu::initializeGL()
 {
     couleur.setRgb(200, 150, 50);
+    glClearColor(0.5,0.5,0.5,1);
+    glEnable(GL_DEPTH_TEST);
 }
 
 
@@ -29,31 +41,28 @@ void Jeu::resizeGL(int width, int height)
     // Definition de la matrice de projection
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glOrtho(-50.0f * (16/9), 50.0f * (16/9), -50.0f, 50.0f, -2.0f * 50.0f, 2.0f * 50.0f);
+    glOrtho(-50.0f * (16/9), 50.0f * (16/9), -50.0f, 50.0f, -50.0f,50.0f);
 
-    // Definition de la matrice de modele
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
 }
 
 // Fonction d'affichage
 void Jeu::paintGL()
 {
-    glClearColor(150.0,100.0,100.0,1.0); // Couleur à utiliser lorsqu’on va nettoyer la fenetre ( = le fond)
+    glClearColor(0.5,0.5,0.5,1); // Couleur à utiliser lorsqu’on va nettoyer la fenetre ( = le fond)
 
     // Reinitialisation du tampon de couleur
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
     // Reinitialisation de la matrice courante
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    gluLookAt(posCamX_,posCamY_,posCamZ_,0,0,0,0,1,0);
 
-    // Reglage de la couleur
-    glColor3f(couleur.redF(),couleur.greenF(),couleur.blueF());
-    // Debut de l'affichage
-    glBegin(GL_QUADS); // Primitive à afficher et début de la déclaration des vertices de cette primitive
-    glVertex2f(0, 0);  // Déclaration des coordonnées des sommets (en 2D, z=0)
-    glVertex2f(0, 25);
-    glVertex2f(25+posX, 25+posY);
-    glVertex2f(25, 0);
-    glEnd();
+    for(int i=0;i<tabBrique.size();i++){
+       tabBrique[i]->displayBrique();
+    }
+    for(int i=0;i<tabMur.size();i++){
+       tabMur[i]->displayMur();
+    }
 }
 
 
@@ -61,6 +70,7 @@ void Jeu::paintGL()
 void Jeu::keyPressEvent(QKeyEvent * event){
     switch(event->key())    {
         // Sortie de l'application
+
         case Qt::Key_Escape:
         {
             close();
