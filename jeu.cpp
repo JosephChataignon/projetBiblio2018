@@ -11,11 +11,12 @@ Jeu::Jeu(QWidget *parent) : QGLWidget(parent) {
     move(QApplication::desktop()->screen()->rect().center() - rect().center());
     for(int j=0;j<12;j++){
         for(int i=0;i<10;i++){
-           tabBrique.push_back(new brique(-35.1f+7*i,45-j*3,0));
+           tabBrique.push_back(new brique(-35.1f+7*i,40-j*3,0));
         }
     }
-    tabMur.push_back(new mur(-37,46,0));
-    tabMur.push_back(new mur(35,46,0));
+    tabMur.push_back(new mur(-37,42,0,true));
+    tabMur.push_back(new mur(35,42,0,true));
+    tabMur.push_back(new mur(-37,45,0,false));
 
     qInfo() << tabBrique.size();
     posCamX_=0;

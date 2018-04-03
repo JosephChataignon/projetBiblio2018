@@ -8,12 +8,14 @@
 class mur
 {
 public:
-    mur(float x, float y, float z);
+    mur(float x, float y, float z, bool sens);
     void displayMur();
 private:
     float positionX;
     float positionY;
     float positionZ;
+    bool sens;
+    float x,y;
 };
 
 #endif // MUR_H
