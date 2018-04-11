@@ -31,13 +31,15 @@ SOURCES += main.cpp\
     gestioncam.cpp \
     jeu.cpp \
     brique.cpp \
-    mur.cpp
+    mur.cpp \
+    palet.cpp
 
 HEADERS  += widget.h \
     gestioncam.h \
     jeu.h \
     brique.h \
-    mur.h
+    mur.h \
+    palet.h
 
 FORMS    += widget.ui
 

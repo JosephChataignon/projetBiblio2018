@@ -9,6 +9,7 @@
 #include <QColor>
 #include "brique.h"
 #include "mur.h"
+#include "palet.h"
 
 class Jeu : public QGLWidget
 {
@@ -38,6 +39,7 @@ private:
     int posX;
     int posY;
     std::vector<brique*> tabBrique;
+    palet* barre;
     std::vector<mur*> tabMur;
     QColor couleur;
     float posCamX_;

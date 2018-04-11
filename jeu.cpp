@@ -17,8 +17,7 @@ Jeu::Jeu(QWidget *parent) : QGLWidget(parent) {
     tabMur.push_back(new mur(-37,42,0,true));
     tabMur.push_back(new mur(35,42,0,true));
     tabMur.push_back(new mur(-37,45,0,false));
-
-    qInfo() << tabBrique.size();
+    barre =new palet(0,0,0);
     posCamX_=0;
     posCamY_=0;
     posCamZ_=1.1f;
@@ -64,6 +63,7 @@ void Jeu::paintGL()
     for(int i=0;i<tabMur.size();i++){
        tabMur[i]->displayMur();
     }
+    barre->displayPalet(posX,0,0);
 }
 
 
@@ -71,6 +71,7 @@ void Jeu::paintGL()
 void Jeu::keyPressEvent(QKeyEvent * event){
     switch(event->key())    {
         // Sortie de l'application
+
 
         case Qt::Key_Escape:
         {
