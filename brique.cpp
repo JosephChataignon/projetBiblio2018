@@ -15,40 +15,40 @@ void brique::displayBrique()
     glBegin(GL_QUADS);
     glColor3ub(0,0,255); // bleu
     glVertex3f(0.0f, 0.0f, 1.0f);
-    glVertex3f( 6.0f, 0.0f, 1.0f);
-    glVertex3f( 6.0f, 2.0f, 1.0f);
-    glVertex3f(0.0f, 2.0f, 1.0f);
+    glVertex3f( 30, 0.0f, 1.0f);
+    glVertex3f( 30, 10, 1.0f);
+    glVertex3f(0.0f, 10, 1.0f);
 
 
     glColor3ub(255,0,0);// rouge
-    glVertex3f(6.0f, 0.0f, 0.0f);
-    glVertex3f(6.0f, 2.0f,0.0f);
-    glVertex3f( 6.0f, 2.0f, 1.0f);
-    glVertex3f( 6.0f, 0.0f, 1.0f);
+    glVertex3f(30, 0.0f, 0.0f);
+    glVertex3f(30, 10,0.0f);
+    glVertex3f( 30, 10, 1.0f);
+    glVertex3f( 30, 0.0f, 1.0f);
 
     glColor3ub(0,255,0); // vert
-    glVertex3f(6.0f, 2.0f, 0.0f);
-    glVertex3f(0.0f, 2.0f, 0.0f);
+    glVertex3f(30, 10, 0.0f);
+    glVertex3f(0.0f, 10, 0.0f);
     glVertex3f( 0.0f, 0.0f,0.0f);
-    glVertex3f( 6.0f,0.0f,0.0f);
+    glVertex3f( 30,0.0f,0.0f);
 
     glColor3ub(0,255,255);//cyan
     glVertex3f(0.0f, 0.0f, 1.0f);
     glVertex3f( 0.0f, 0.0f, 0.0f);
-    glVertex3f( 6.0f, 0.0f,0.0f);
-    glVertex3f(6.0f, 0.0f, 1.0f);
+    glVertex3f( 30, 0.0f,0.0f);
+    glVertex3f(30, 0.0f, 1.0f);
 
     glColor3ub(255,255,0);//jaune
-    glVertex3f( 0.0f, 2.0f, 0.0f);
-    glVertex3f( 6.0f, 2.0f, 0.0f);
-    glVertex3f( 6.0f, 2.0f, 1.0f);
-    glVertex3f( 0.0f, 2.0f, 1.0f);
+    glVertex3f( 0.0f, 10, 0.0f);
+    glVertex3f( 30, 10, 0.0f);
+    glVertex3f( 30, 10, 1.0f);
+    glVertex3f( 0.0f, 10, 1.0f);
 
     glColor3ub(255,0,255);// magenta
     glVertex3f( 0.0f, 0.0f, 1.0f);
     glVertex3f( 0.0f, 0.0f,0.0f);
-    glVertex3f( 0.0f, 2.0f,0.0f);
-    glVertex3f( 0.0f, 2.0f, 1.0f);
+    glVertex3f( 0.0f, 10,0.0f);
+    glVertex3f( 0.0f, 10, 1.0f);
     glEnd();
     glPopMatrix();
 }

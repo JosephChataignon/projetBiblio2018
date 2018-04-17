@@ -7,11 +7,11 @@ mur::mur(float x, float y, float z,bool sens)
     positionZ=z;
     this->sens=sens;
     if(sens){ // horizontale
-        this->x=1.0f;
-        this->y=-40.0f;
+        this->x=10.0f;
+        this->y=-140.0f;
     }else{//vertical
-        this->x=73.0f;
-        this->y=-2.0f;
+        this->x=331;
+        this->y=5.0f;
     }
 }
 

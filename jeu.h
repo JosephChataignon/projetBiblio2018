@@ -10,6 +10,7 @@
 #include "brique.h"
 #include "mur.h"
 #include "palet.h"
+#include "balle.h"
 
 class Jeu : public QGLWidget
 {
@@ -17,7 +18,7 @@ class Jeu : public QGLWidget
 
 public:
     explicit Jeu(QWidget *parent = 0);
-    void setPos(cv::Point v){ posX = v.x; posY = v.y; qInfo() << "setVect de jeu.h: "<<posX<<" , "<<posY; }
+    void setPos(cv::Point v){ posX += v.x; posY = v.y; qInfo() << "setVect de jeu.h: "<<posX<<" , "<<posY; }
 
 public slots:
 
@@ -32,14 +33,12 @@ protected:
     // Fonction d'affichage
     void paintGL();
 
-    // Fonction de gestion d'interactions clavier
-    void keyPressEvent(QKeyEvent * event);
-
 private:
     int posX;
     int posY;
     std::vector<brique*> tabBrique;
     palet* barre;
+    balle* current_balle;
     std::vector<mur*> tabMur;
     QColor couleur;
     float posCamX_;

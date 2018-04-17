@@ -24,6 +24,7 @@ public:
     explicit Widget(QWidget *parent = 0);
     void setVect(Point v){ vect = v; }
     cv::Point getVect(){ return vect; }
+    void keyPressEvent(QKeyEvent * event);
     ~Widget();
 
 private:
