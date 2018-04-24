@@ -12,7 +12,7 @@
 #include "mur.h"
 #include "palet.h"
 #include "balle.h"
-
+#include "fond.h"
 class Jeu : public QGLWidget
 {
     Q_OBJECT
@@ -42,6 +42,7 @@ private:
     float vY;
     std::vector<brique*> tabBrique;
     palet* barre;
+    fond* fond_;
     balle* current_balle;
     std::vector<mur*> tabMur;
     QColor couleur;
@@ -52,6 +53,7 @@ private:
     float murGauche = -166;
     float murDroite =  155;
     float murHaut   =  142;
+    float murBas=-10;
     float vitessePalet;
 
 };

@@ -17,7 +17,9 @@ Jeu::Jeu(QWidget *parent) : QGLWidget(parent) {
     tabMur.push_back(new mur(murGauche,murHaut-2,0,true));
     tabMur.push_back(new mur(murDroite,murHaut-2,0,true));
     tabMur.push_back(new mur(murGauche,murHaut,0,false));
+    tabMur.push_back(new mur(murGauche,murBas,0,false,true));
     barre =new palet(0,0,0);
+    fond_=new fond(0,0,0);
     current_balle=new balle(0,10,0);
     posCamX_=0;
     posCamY_=0;
@@ -68,6 +70,7 @@ void Jeu::paintGL()
        tabMur[i]->displayMur();
     }
     barre->displayPalet();
+    fond_->displayFond();
     current_balle->displayBalle();
 }
 

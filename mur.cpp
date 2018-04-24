@@ -1,15 +1,22 @@
 #include "mur.h"
 
-mur::mur(float x, float y, float z,bool sens)
+mur::mur(float x, float y, float z,bool sens,bool murBas)
 {
     positionX=x;
     positionY=y;
     positionZ=z;
+    r=0;
+    g=0;
+    b=255;
     this->sens=sens;
-    if(sens){ // horizontale
+    if(sens){ // vertical
         this->x=10.0f;
         this->y=-140.0f;
-    }else{ // vertical
+    }else{ // horizontal
+        if(murBas){
+            r=255;
+            b=0;
+        }
         this->x=331;
         this->y=5.0f;
     }
@@ -21,7 +28,7 @@ void mur::displayMur()
     glPushMatrix();
     glTranslatef(positionX,positionY,positionZ);
     glBegin(GL_QUADS);
-    glColor3ub(0,0,255); // bleu
+    glColor3ub(r,g,b);
     glVertex3f(0.0f, 0.0f, 1.0f);
     glVertex3f( x, 0.0f, 1.0f);
     glVertex3f( x, y, 1.0f);
