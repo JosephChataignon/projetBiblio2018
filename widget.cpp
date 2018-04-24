@@ -61,7 +61,7 @@ Widget::~Widget()
 }
 void Widget::animation()
 {
-
+    ui->widgetJeu->animation();
 }
 
 void Widget::video()

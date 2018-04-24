@@ -9,7 +9,7 @@ mur::mur(float x, float y, float z,bool sens)
     if(sens){ // horizontale
         this->x=10.0f;
         this->y=-140.0f;
-    }else{//vertical
+    }else{ // vertical
         this->x=331;
         this->y=5.0f;
     }

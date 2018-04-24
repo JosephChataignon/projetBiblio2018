@@ -7,11 +7,8 @@ palet::palet(float x, float y, float z)
     positionZ=z;
 }
 
-void palet::displayPalet(float x, float y, float z)
+void palet::displayPalet()
 {
-    positionX+=x;
-    positionY=y;
-    positionZ=z;
     qInfo() << "position X du palet : "<<positionX;
     glPushMatrix();
     glTranslatef(positionX,positionY,positionZ);
@@ -54,4 +51,8 @@ void palet::displayPalet(float x, float y, float z)
     glVertex3f( -30.0f, 4, 1.0f);
     glEnd();
     glPopMatrix();
+}
+
+void palet::movePalet(float x){
+    positionX+=x;
 }

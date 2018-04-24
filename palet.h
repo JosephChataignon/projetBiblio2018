@@ -9,7 +9,9 @@ class palet
 {
 public:
     palet(float x, float y, float z);
-    void displayPalet(float x, float y, float z);
+    void displayPalet();
+    void movePalet(float x);
+    float getX(){return positionX;}
 private:
     float positionX;
     float positionY;

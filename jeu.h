@@ -19,7 +19,7 @@ class Jeu : public QGLWidget
 
 public:
     explicit Jeu(QWidget *parent = 0);
-    void setPos(cv::Point v){ posX =(float) v.x; posY = v.y;}
+    void setPos(cv::Point v){ vX =(float) v.x; vY = v.y;}
 
     void animation();
 public slots:
@@ -38,9 +38,8 @@ protected:
 private:
     // Timer d'animation
     float m_Time { 0.0f };
-    QTimer m_AnimationTimer;
-    float posX;
-    float posY;
+    float vX;
+    float vY;
     std::vector<brique*> tabBrique;
     palet* barre;
     balle* current_balle;
@@ -49,6 +48,11 @@ private:
     float posCamX_;
     float posCamY_;
     float posCamZ_;
+
+    float murGauche = -166;
+    float murDroite =  155;
+    float murHaut   =  142;
+    float vitessePalet;
 
 };
 #endif // JEU_H
