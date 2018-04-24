@@ -13,7 +13,7 @@ void palet::displayPalet(float x, float y, float z)
     positionY=y;
     positionZ=z;
     glPushMatrix();
-    glTranslatef(positionX,positionY,positionZ);
+    glTranslatef(x,y,z);
     glBegin(GL_QUADS);
     glColor3ub(0,0,255); // bleu
     glVertex3f(-30.0f, 0.0f, 1.0f);

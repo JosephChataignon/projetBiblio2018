@@ -22,6 +22,15 @@ Jeu::Jeu(QWidget *parent) : QGLWidget(parent) {
     posCamX_=0;
     posCamY_=0;
     posCamZ_=1.1f;
+
+    // Connexion du timer
+    connect(&m_AnimationTimer,  &QTimer::timeout, [&] {
+        m_Time += 1.0f / 24.0f;
+        updateGL();
+    });
+
+    m_AnimationTimer.setInterval(10);
+    m_AnimationTimer.start();
 }
 
 // Fonction d'initialisation
@@ -65,6 +74,6 @@ void Jeu::paintGL()
        tabMur[i]->displayMur();
     }
     barre->displayPalet(posX,0,0);
-    current_balle->displayBalle();
+    current_balle->displayBalle(m_Time);
 }
 

@@ -9,7 +9,7 @@ class balle
 {
 public:
     balle(float x, float y, float z);
-    void displayBalle();
+    void displayBalle(const float time);
 
     // Destructeur
     virtual ~balle();
