@@ -77,3 +77,6 @@ void Jeu::paintGL()
     current_balle->displayBalle(m_Time);
 }
 
+void Jeu::animation(){
+
+}

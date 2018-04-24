@@ -19,8 +19,9 @@ class Jeu : public QGLWidget
 
 public:
     explicit Jeu(QWidget *parent = 0);
-    void setPos(cv::Point v){ posX = v.x; posY = v.y; qInfo() << "setVect de jeu.h: "<<posX<<" , "<<posY; }
+    void setPos(cv::Point v){ posX =(float) v.x; posY = v.y;}
 
+    void animation();
 public slots:
 
 protected:
@@ -38,8 +39,8 @@ private:
     // Timer d'animation
     float m_Time { 0.0f };
     QTimer m_AnimationTimer;
-    int posX;
-    int posY;
+    float posX;
+    float posY;
     std::vector<brique*> tabBrique;
     palet* barre;
     balle* current_balle;

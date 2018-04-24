@@ -1,5 +1,5 @@
 #include "palet.h"
-
+#include <QDebug>
 palet::palet(float x, float y, float z)
 {
     positionX=x;
@@ -9,11 +9,12 @@ palet::palet(float x, float y, float z)
 
 void palet::displayPalet(float x, float y, float z)
 {
-    positionX=x;
+    positionX+=x;
     positionY=y;
     positionZ=z;
+    qInfo() << "position X du palet : "<<positionX;
     glPushMatrix();
-    glTranslatef(x,y,z);
+    glTranslatef(positionX,positionY,positionZ);
     glBegin(GL_QUADS);
     glColor3ub(0,0,255); // bleu
     glVertex3f(-30.0f, 0.0f, 1.0f);

@@ -27,14 +27,17 @@ public:
     void keyPressEvent(QKeyEvent * event);
     ~Widget();
 
+
 private:
     Ui::Widget *ui;
     Mat frame;
     QTimer* time;
     gestionCam *cam;
     cv::Point vect;
+    QTimer* timeAnimation;
 
 private slots:
+    void animation();
     void video();
 };
 

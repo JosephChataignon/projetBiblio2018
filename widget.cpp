@@ -11,7 +11,10 @@ Widget::Widget(QWidget *parent) :
     cam = new gestionCam();
     ui->setupUi(this);
     time = new QTimer(this);
+    timeAnimation=new QTimer(this);
+    connect(timeAnimation,SIGNAL(timeout()),this,SLOT(animation()));
     connect( time, SIGNAL(timeout()), this, SLOT(video()) );
+    timeAnimation->start(20);
     time->start(20);
 }
 
@@ -56,7 +59,10 @@ Widget::~Widget()
 {
     delete ui;
 }
+void Widget::animation()
+{
 
+}
 
 void Widget::video()
 {
