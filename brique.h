@@ -5,6 +5,7 @@
 #include <GL/glu.h>
 #include <QColor>
 #include <QtGui/qopengl.h>
+#include <QImage>
 class brique
 {
 public:
@@ -14,6 +15,9 @@ private:
     float positionX;
     float positionY;
     float positionZ;
+    QImage tex;
+    // Identifiant de texture
+    GLuint m_TextureID=1;
 };
 
 #endif // BRIQUE_H

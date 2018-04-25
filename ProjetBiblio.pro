@@ -56,3 +56,6 @@ LIBS += -L$$(OPENCV_DIR)\lib \
     -lopencv_video2413 \
     -lopencv_features2d2413 \
     -lopencv_calib3d2413
+
+RESOURCES += \
+    image/ressource.qrc

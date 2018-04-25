@@ -35,6 +35,7 @@ void Jeu::initializeGL()
     couleur.setRgb(200, 150, 50);
     glClearColor(0.5,0.5,0.5,1);
     glEnable(GL_DEPTH_TEST);
+    glEnable(GL_TEXTURE_2D);
 
     vitesseBalleY = 5;
     vitesseBalleX = rand()%5-2.5;

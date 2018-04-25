@@ -41,6 +41,7 @@ private:
     float m_Time { 0.0f };
     float vX;
     float vY;
+
     std::vector<brique*> tabBrique;
     palet* barre;
     fond* fond_;
