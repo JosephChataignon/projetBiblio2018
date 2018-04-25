@@ -13,6 +13,11 @@ public:
 
     // Destructeur
     virtual ~balle();
+    // Getters & setters
+    float getXBalle(){return positionX;}
+    float getYBalle(){return positionY;}
+    void setXBalle(float x){positionX = x;}
+    void setYBalle(float y){positionY = y;}
 private:
     float positionX;
     float positionY;

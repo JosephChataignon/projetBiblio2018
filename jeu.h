@@ -36,6 +36,7 @@ protected:
     void paintGL();
 
 private:
+    void rebondPalet(float xPalet, float xBalle);
     // Timer d'animation
     float m_Time { 0.0f };
     float vX;
@@ -55,6 +56,8 @@ private:
     float murHaut   =  142;
     float murBas=-10;
     float vitessePalet;
+    float vitesseBalleX;
+    float vitesseBalleY;
 
 };
 #endif // JEU_H

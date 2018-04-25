@@ -11,7 +11,7 @@ public:
     palet(float x, float y, float z);
     void displayPalet();
     void movePalet(float x);
-    float getX(){return positionX;}
+    float getXPalet(){return positionX;}
 private:
     float positionX;
     float positionY;
