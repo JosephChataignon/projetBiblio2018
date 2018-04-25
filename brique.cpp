@@ -6,12 +6,12 @@ brique::brique(float x, float y, float z)
     positionX=x;
     positionY=y;
     positionZ=z;
-    tex = QGLWidget::convertToGLFormat(QImage(QString(":/image/brique.jpg")));
+    /*tex = QGLWidget::convertToGLFormat(QImage(QString(":/image/brique.jpg")));
     glGenTextures(1, &m_TextureID);
     glBindTexture(GL_TEXTURE_2D, m_TextureID);
     glTexImage2D(GL_TEXTURE_2D, 0, 3, tex.width(), tex.height(), 0, GL_RGBA , GL_UNSIGNED_BYTE, tex.bits());
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);*/
 
 }
 
