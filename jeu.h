@@ -41,7 +41,9 @@ private:
     float m_Time { 0.0f };
     float vX;
     float vY;
-
+    QString m_TexteLevel = "";
+    QString m_TexteScore = "";
+    QString m_TexteNbBalle = "";
     std::vector<brique*> tabBrique;
     palet* barre;
     fond* fond_;
@@ -53,9 +55,9 @@ private:
     float posCamZ_;
 
     float murGauche = -166;
-    float murDroite =  155;
-    float murHaut   =  142;
-    float murBas=-10;
+    float murDroite =  145;
+    float murHaut   =  77;
+    float murBas=-80;
     float vitessePalet;
     float vitesseBalleX;
     float vitesseBalleY;

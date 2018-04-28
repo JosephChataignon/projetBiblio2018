@@ -14,8 +14,8 @@ private:
     float positionX;
     float positionY;
     float positionZ;
-    float r,g,b;
     bool sens;
+    bool destruction;
     float x,y;
 };
 

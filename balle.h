@@ -8,7 +8,7 @@
 class balle
 {
 public:
-    balle(float x, float y, float z);
+    balle(float x, float y, float z, GLdouble rayon);
     void displayBalle();
 
     // Destructeur
@@ -16,13 +16,15 @@ public:
     // Getters & setters
     float getXBalle(){return positionX;}
     float getYBalle(){return positionY;}
+    GLdouble getRadius(){return radius;}
+    void setXBalle(GLdouble x){radius = x;}
     void setXBalle(float x){positionX = x;}
     void setYBalle(float y){positionY = y;}
 private:
     float positionX;
     float positionY;
     float positionZ;
-
+    GLdouble radius;
     GLUquadric * m_balle = nullptr;
 };
 
