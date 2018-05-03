@@ -15,6 +15,12 @@ public:
     cassebrique();
     void affichage();
     void animation(float vX);
+    int getNbBalle(){return nbBalle;}
+    void setNbBalle(int x){nbBalle = x;}
+    int getScore(){return score_;}
+    void setScore(int x){score_ = x;}
+    int getNiveau(){return niveau_;}
+    void setNiveau(int x){niveau_ = x;}
 
 private:
     float murGauche = -166;
@@ -28,6 +34,7 @@ private:
     std::vector<mur*> tabMur;
     int nbBalle;
     int score_;
+    int niveau_;
     float vitessePalet;
 
     float vitesseBalleY;
