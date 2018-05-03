@@ -12,9 +12,9 @@ Jeu::Jeu(QWidget *parent) : QGLWidget(parent) {
     move(QApplication::desktop()->screen()->rect().center() - rect().center());
 
 
-    posCamX_=0;
-    posCamY_=0;
-    posCamZ_=1.1f;
+    posCamX_=0.0f;
+    posCamY_=0.7f;
+    posCamZ_=10.1f;
 
     vitessePalet = 0;
 
@@ -28,30 +28,15 @@ void Jeu::initializeGL()
     glEnable(GL_DEPTH_TEST);
     //glEnable(GL_TEXTURE_2D);
     // Réglage de la lampe (en position 0,0,0, emettant dans toutes les directions, avec une couleur ambiante et diffuse blanche)
-    GLfloat Light[] = {0.0f, 0.0f, 0.0f, 1.0f};
+    GLfloat Light[] = {1.0f, 1.0f, 1.0f, 1.0f};
     glLightfv(GL_LIGHT0, GL_AMBIENT_AND_DIFFUSE, Light);
-    GLfloat positionLight[] = {0.0f, 0.0f, 1.0f, 1.0f};
+    GLfloat positionLight[] = {0.0f, 0.0f, 1.0f, 0.0f};
     glLightfv(GL_LIGHT0, GL_POSITION, positionLight);
 
     //Activation de la lumiere dans OpenGL et de la lampe
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
-
-
-
-    for(int j=0;j<8;j++){
-        for(int i=0;i<10;i++){
-           tabBrique.push_back(new brique(-155+30*i,65-j*10,0,0.0f,30,0.0f,10));
-        }
-    }
-    tabMur.push_back(new mur(murGauche,murHaut-2,0,true));
-    tabMur.push_back(new mur(murDroite,murHaut-2,0,true));
-    tabMur.push_back(new mur(murGauche,murHaut,0,false));
-    tabMur.push_back(new mur(murGauche,murBas,0,false,true));
-    barre =new palet(0,-75,0);
-    fond_=new fond(0,-65,0,murGauche,murDroite+10,-10,147.0f);
-    current_balle=new balle(0,-65,0,5);
-
+    jeuCasseBrique=new cassebrique();
     vitesseBalleY = 5;
     vitesseBalleX = rand()%5-2.5;
     m_TexteLevel = QString("Niveau: %1").arg(QString::fromStdString("1"));
@@ -86,15 +71,7 @@ void Jeu::paintGL()
     glLoadIdentity();
     gluLookAt(posCamX_,posCamY_,posCamZ_,0,0,0,0,1,0);
     glScalef(1.25f,1.25f,1.0f);
-    for(int i=0;i<tabBrique.size();i++){
-       tabBrique[i]->displayBrique();
-    }
-    for(int i=0;i<tabMur.size();i++){
-       tabMur[i]->displayMur();
-    }
-    barre->displayPalet();
-    fond_->displayFond();
-    current_balle->displayBalle();
+    jeuCasseBrique->affichage();
     glColor3f(0,0,0);
     renderText(270, 35, "Casse brique", QFont( "Helvetica", 20, QFont::Bold, TRUE ));
     renderText(0, 275, m_TexteNbBalle, QFont( "lucida", 10, QFont::Bold, TRUE ));
@@ -103,36 +80,6 @@ void Jeu::paintGL()
 
 }
 
-void Jeu::animation(){
-
-    // Mouvement du palet
-    if(vitessePalet > 0){vitessePalet -= 2; }else{ vitessePalet += 2; }
-    vitessePalet +=vX;
-    if(vitessePalet > 25){ vitessePalet = 25; }else if(vitessePalet < -25){ vitessePalet = -25; }
-    if(( barre->getXPalet()-30+vitessePalet <= murGauche )||( barre->getXPalet()+30+vitessePalet >= murDroite )){
-        vitessePalet = -vitessePalet;
-    }
-    barre->movePalet(vitessePalet);
-
-    // Mouvement de la balle
-    float xBalle = current_balle->getXBalle();
-    float yBalle = current_balle->getYBalle();
-    float xPalet = barre->getXPalet();
-    xBalle += vitesseBalleX;
-    yBalle += vitesseBalleY;
-    // Collisions de la balle avec les murs, le palet et les briques
-    if( yBalle+5 >= murHaut-5 ){ vitesseBalleY = -vitesseBalleY; }
-    if( xBalle+5 >= murDroite ){ vitesseBalleX = -vitesseBalleX; }
-    if( xBalle-5 <= murGauche+10 ){ vitesseBalleX = -vitesseBalleX; }
-    if( yBalle-5 <= -70 && yBalle-5 >= -71 && xPalet-xBalle<35 && xPalet-xBalle>-35 && vitesseBalleY<0 ){
-        vitesseBalleY = -vitesseBalleY;
-        vitesseBalleX += (xBalle-xPalet)*0.5;
-    }
-    //TODO - collision avec les briques
-    current_balle->setXBalle(xBalle);
-    current_balle->setYBalle(yBalle);
-
-}
 
 void Jeu::rebondPalet(float xPalet, float xBalle){
     float vitesseAbsBalle = sqrt(vitesseBalleX*vitesseBalleX+vitesseBalleY*vitesseBalleY);

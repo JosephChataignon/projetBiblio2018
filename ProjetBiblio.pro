@@ -34,7 +34,8 @@ SOURCES += main.cpp\
     mur.cpp \
     palet.cpp \
     balle.cpp \
-    fond.cpp
+    fond.cpp \
+    cassebrique.cpp
 
 HEADERS  += widget.h \
     gestioncam.h \
@@ -43,7 +44,8 @@ HEADERS  += widget.h \
     mur.h \
     palet.h \
     balle.h \
-    fond.h
+    fond.h \
+    cassebrique.h
 
 FORMS    += widget.ui
 

@@ -61,7 +61,7 @@ Widget::~Widget()
 }
 void Widget::animation()
 {
-    ui->widgetJeu->animation();
+    ui->widgetJeu->getJeuCasseBrique()->animation((float)cam->getVect().x);
 }
 
 void Widget::video()

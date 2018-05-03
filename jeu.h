@@ -8,11 +8,7 @@
 #include "opencv2/opencv.hpp"
 #include <QDebug>
 #include <QColor>
-#include "brique.h"
-#include "mur.h"
-#include "palet.h"
-#include "balle.h"
-#include "fond.h"
+#include <cassebrique.h>
 class Jeu : public QGLWidget
 {
     Q_OBJECT
@@ -21,7 +17,8 @@ public:
     explicit Jeu(QWidget *parent = 0);
     void setPos(cv::Point v){ vX =(float) v.x; vY = v.y;}
 
-    void animation();
+
+    cassebrique* getJeuCasseBrique(){return jeuCasseBrique;}
 public slots:
 
 protected:
@@ -35,20 +32,19 @@ protected:
     // Fonction d'affichage
     void paintGL();
 
+
+
 private:
     void rebondPalet(float xPalet, float xBalle);
     // Timer d'animation
     float m_Time { 0.0f };
     float vX;
     float vY;
+    cassebrique* jeuCasseBrique;
     QString m_TexteLevel = "";
     QString m_TexteScore = "";
     QString m_TexteNbBalle = "";
-    std::vector<brique*> tabBrique;
-    palet* barre;
-    fond* fond_;
-    balle* current_balle;
-    std::vector<mur*> tabMur;
+
     QColor couleur;
     float posCamX_;
     float posCamY_;

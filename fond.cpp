@@ -16,7 +16,7 @@ void fond::displayFond()
     glPushMatrix();
     glTranslatef(positionX,positionY,positionZ);
 
-    GLfloat color[] = {0.0f,1.0f,1.0f, 1.0f};
+    GLfloat color[] = {0.25f,0.25f,0.25f, 75.0f};
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, color);
     glBegin(GL_QUADS);
 
