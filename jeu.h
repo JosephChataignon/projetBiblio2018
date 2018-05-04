@@ -50,9 +50,9 @@ private:
     float posCamY_;
     float posCamZ_;
 
-    float murGauche = -166;
+    float murGauche = -165;
     float murDroite =  145;
-    float murHaut   =  77;
+    float murHaut   =  75;
     float murBas=-80;
     float vitessePalet;
     float vitesseBalleX;

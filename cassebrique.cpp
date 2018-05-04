@@ -1,12 +1,13 @@
 #include "cassebrique.h"
 
+
 cassebrique::cassebrique(){
-    tabMur.push_back(new mur(murGauche,murHaut-2,0,true));
-    tabMur.push_back(new mur(murDroite,murHaut-2,0,true));
+    tabMur.push_back(new mur(murGauche,murHaut,0,true));
+    tabMur.push_back(new mur(murDroite,murHaut,0,true));
     tabMur.push_back(new mur(murGauche,murHaut,0,false));
     tabMur.push_back(new mur(murGauche,murBas,0,false,true));
     barre =new palet(0,-75,0);
-    fond_=new fond(0,-65,0,murGauche,murDroite+10,-10,147.0f);
+    fond_=new fond(0,-67,0,murGauche,murDroite+10,-10,147.0f);
     current_balle=new balle(0,-65,0,5);
     score_=0;
     nbBalle=3;

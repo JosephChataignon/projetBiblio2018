@@ -8,10 +8,10 @@ mur::mur(float x, float y, float z,bool sens,bool murBas)
     this->sens=sens;
     if(sens){ // vertical
         this->x=10.0f;
-        this->y=-140.0f;
+        this->y=-150.0f;
     }else{ // horizontal
 
-        this->x=321;
+        this->x=320;
         this->y=5.0f;
     }
     destruction=murBas;

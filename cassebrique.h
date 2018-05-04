@@ -26,9 +26,9 @@ public:
     void setNiveau(int x){niveau_ = x;}
 
 private:
-    float murGauche = -166;
+    float murGauche = -165;
     float murDroite =  145;
-    float murHaut   =  77;
+    float murHaut   =  75;
     float murBas=-80;
     std::vector<brique*> tabBrique;
     palet* barre;
