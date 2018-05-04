@@ -2,7 +2,7 @@
 #include <QApplication>
 #include <QDesktopWidget>
 #include <QFont>
-
+#include <thread>
 
 // Constructeur
 Jeu::Jeu(QWidget *parent) : QGLWidget(parent) {
@@ -74,6 +74,24 @@ void Jeu::paintGL()
     gluLookAt(posCamX_,posCamY_,posCamZ_,0,0,0,0,1,0);
     glScalef(1.25f,1.25f,1.0f);
     jeuCasseBrique->affichage();
+    if(pause_){
+        pause();
+        pause_=false;
+    }
+    if(jeuCasseBrique->getNewBall()){
+        pause_=true;
+
+        if(jeuCasseBrique->getNbBalle()==0){
+            glColor3f(1,1,1);
+            renderText(270,190, "PERDU", QFont( "Helvetica", 20, QFont::Bold, TRUE ));
+            jeuCasseBrique->setNbBalle(3);
+        }else {
+            glColor3f(1,1,1);
+            renderText(250,190, "Nouvelle balle", QFont( "Helvetica", 20, QFont::Bold, TRUE ));
+        }
+        jeuCasseBrique->setNewBall(false);
+    }
+
     glColor3f(0,0,0);
     renderText(270, 35, "Casse-briques", QFont( "Helvetica", 20, QFont::Bold, TRUE ));
     renderText(0, 275, m_TexteNbBalle, QFont( "lucida", 10, QFont::Bold, TRUE ));
@@ -91,5 +109,8 @@ void Jeu::rebondPalet(float xPalet, float xBalle){
     vitesseBalleX = sqrt(vitesseAbsBalle*vitesseAbsBalle-vitesseBalleY*vitesseBalleY);
 }
 
+void Jeu::pause(){
+    std::this_thread::sleep_for(std::chrono::milliseconds(3000));
+}
 
 

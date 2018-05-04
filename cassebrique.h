@@ -18,6 +18,8 @@ public:
     void nouvelleBalle();
     void nouveauNiveau();
 
+    bool getNewBall(){return newBall;}
+    void setNewBall(bool x){newBall=x;}
     int getNbBalle(){return nbBalle;}
     void setNbBalle(int x){nbBalle = x;}
     int getScore(){return score_;}
@@ -38,8 +40,8 @@ private:
     int nbBalle;
     int score_;
     int niveau_;
+    bool newBall=false;
     float vitessePalet;
-
     float vitesseBalleY;
     float vitesseBalleX;
 

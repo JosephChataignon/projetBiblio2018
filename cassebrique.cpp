@@ -1,6 +1,7 @@
 #include "cassebrique.h"
-
-
+#include <QTimer>
+#include <QDebug>
+#include <thread>
 cassebrique::cassebrique(){
     tabMur.push_back(new mur(murGauche,murHaut,0,true));
     tabMur.push_back(new mur(murDroite,murHaut,0,true));
@@ -11,7 +12,7 @@ cassebrique::cassebrique(){
     current_balle=new balle(0,-65,0,5);
     score_=0;
     nbBalle=3;
-    niveau_=0;
+    niveau_=1;
     nouvelleBalle();
     nouveauNiveau();
 }
@@ -28,6 +29,7 @@ void cassebrique::affichage(){
     barre->displayPalet();
     fond_->displayFond();
     current_balle->displayBalle();
+
 }
 
 void cassebrique::animation(float vX){
@@ -64,15 +66,23 @@ void cassebrique::animation(float vX){
     //TODO - collision avec les briques
     current_balle->setXBalle(xBalle);
     current_balle->setYBalle(yBalle);
+
 }
 
 void cassebrique::nouvelleBalle(){
+
+    newBall=true;
     vitessePalet=0;
     vitesseBalleY = 5;
     vitesseBalleX = rand()%5-2.5;
     if(vitesseBalleX==0){vitesseBalleX+=1;}
     barre->setXPalet(0);
-    if(nbBalle <= 0){ /*TODO - fin de la partie*/ }
+
+    if(nbBalle <= 0){
+        niveau_=1;
+        score_=0;
+        nouveauNiveau();
+    }
 }
 
 void cassebrique::nouveauNiveau(){
@@ -84,3 +94,4 @@ void cassebrique::nouveauNiveau(){
         }
     }
 }
+
