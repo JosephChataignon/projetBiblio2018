@@ -17,8 +17,8 @@ public:
     explicit Jeu(QWidget *parent = 0);
     void setPos(cv::Point v){ vX =(float) v.x; vY = v.y;}
 
-
     cassebrique* getJeuCasseBrique(){return jeuCasseBrique;}
+    void pause();
 public slots:
 
 protected:
@@ -49,7 +49,7 @@ private:
     float posCamX_;
     float posCamY_;
     float posCamZ_;
-
+    bool pause_=false;
     float murGauche = -165;
     float murDroite =  145;
     float murHaut   =  75;
