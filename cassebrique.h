@@ -15,6 +15,9 @@ public:
     cassebrique();
     void affichage();
     void animation(float vX);
+    void nouvelleBalle();
+    void nouveauNiveau();
+
     int getNbBalle(){return nbBalle;}
     void setNbBalle(int x){nbBalle = x;}
     int getScore(){return score_;}

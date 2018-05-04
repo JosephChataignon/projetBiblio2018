@@ -1,12 +1,6 @@
 #include "cassebrique.h"
 
-cassebrique::cassebrique()
-{
-    for(int j=0;j<8;j++){
-        for(int i=0;i<10;i++){
-           tabBrique.push_back(new brique(-155+30*i,65-j*10,0,0.0f,30,0.0f,10));
-        }
-    }
+cassebrique::cassebrique(){
     tabMur.push_back(new mur(murGauche,murHaut-2,0,true));
     tabMur.push_back(new mur(murDroite,murHaut-2,0,true));
     tabMur.push_back(new mur(murGauche,murHaut,0,false));
@@ -16,16 +10,16 @@ cassebrique::cassebrique()
     current_balle=new balle(0,-65,0,5);
     score_=0;
     nbBalle=3;
-    vitessePalet=0;
-    vitesseBalleY = 5;
-    vitesseBalleX = rand()%5-2.5;
-    if(vitesseBalleX==0){vitesseBalleX+=1;}
+    niveau_=0;
+    nouvelleBalle();
+    nouveauNiveau();
 }
 
-void cassebrique::affichage()
-{
+void cassebrique::affichage(){
     for(int i=0;i<tabBrique.size();i++){
-       tabBrique[i]->displayBrique();
+       if(tabBrique[i]->isPresente()){
+           tabBrique[i]->displayBrique();
+       }
     }
     for(int i=0;i<tabMur.size();i++){
        tabMur[i]->displayMur();
@@ -35,8 +29,7 @@ void cassebrique::affichage()
     current_balle->displayBalle();
 }
 
-void cassebrique::animation(float vX)
-{
+void cassebrique::animation(float vX){
     // Mouvement du palet
     if(vitessePalet > 0){vitessePalet -= 2; }else{ vitessePalet += 2; }
     vitessePalet +=vX;
@@ -52,15 +45,41 @@ void cassebrique::animation(float vX)
     float xPalet = barre->getXPalet();
     xBalle += vitesseBalleX;
     yBalle += vitesseBalleY;
-    // Collisions de la balle avec les murs, le palet et les briques
+
+    // Collisions de la balle avec les murs et le palet
     if( yBalle+5 >= murHaut-5 ){ vitesseBalleY = -vitesseBalleY; }
-    if( xBalle+5 >= murDroite ){ vitesseBalleX = -vitesseBalleX; }
-    if( xBalle-5 <= murGauche+10 ){ vitesseBalleX = -vitesseBalleX; }
+    if( xBalle+5 >= murDroite-5 ){ vitesseBalleX = -vitesseBalleX; }
+    if( xBalle-5 <= murGauche+15 ){ vitesseBalleX = -vitesseBalleX; }
     if( yBalle-5 <= -70 && yBalle-5 >= -71 && xPalet-xBalle<35 && xPalet-xBalle>-35 && vitesseBalleY<0 ){
         vitesseBalleY = -vitesseBalleY;
         vitesseBalleX += (xBalle-xPalet)*0.5;
     }
+    if( yBalle-5 <= murBas+5 ){
+        nbBalle -= 1;
+        xBalle=0;
+        yBalle=-65;
+        nouvelleBalle();
+    }
     //TODO - collision avec les briques
     current_balle->setXBalle(xBalle);
     current_balle->setYBalle(yBalle);
+}
+
+void cassebrique::nouvelleBalle(){
+    vitessePalet=0;
+    vitesseBalleY = 5;
+    vitesseBalleX = rand()%5-2.5;
+    if(vitesseBalleX==0){vitesseBalleX+=1;}
+    barre->setXPalet(0);
+    if(nbBalle <= 0){ /*TODO - fin de la partie*/ }
+}
+
+void cassebrique::nouveauNiveau(){
+    //par défaut
+    tabBrique.clear();
+    for(int j=0;j<8;j++){
+        for(int i=0;i<10;i++){
+           tabBrique.push_back(new brique(-155+30*i,65-j*10,0,0.0f,30,0.0f,10));
+        }
+    }
 }

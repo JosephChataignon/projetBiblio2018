@@ -17,7 +17,7 @@ public:
     float getXBalle(){return positionX;}
     float getYBalle(){return positionY;}
     GLdouble getRadius(){return radius;}
-    void setXBalle(GLdouble x){radius = x;}
+    void setRadiusBalle(GLdouble x){radius = x;}
     void setXBalle(float x){positionX = x;}
     void setYBalle(float y){positionY = y;}
 private:

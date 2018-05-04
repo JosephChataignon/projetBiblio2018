@@ -39,9 +39,7 @@ void Jeu::initializeGL()
     jeuCasseBrique=new cassebrique();
     vitesseBalleY = 5;
     vitesseBalleX = rand()%5-2.5;
-    m_TexteLevel = QString("Niveau: %1").arg(QString::fromStdString("1"));
-    m_TexteScore = QString("Score: %1").arg(QString::fromStdString("1"));
-    m_TexteNbBalle = QString("Nombre de balle(s) restante(s): %1").arg(QString::fromStdString("1"));
+
     if(vitesseBalleX==0){vitesseBalleX+=1;}
 }
 
@@ -62,6 +60,10 @@ void Jeu::resizeGL(int width, int height)
 // Fonction d'affichage
 void Jeu::paintGL()
 {
+    m_TexteLevel = QString("Niveau: %1").arg(QString::number(jeuCasseBrique->getNiveau()));
+    m_TexteScore = QString("Score: %1").arg(QString::number(jeuCasseBrique->getScore()));
+    m_TexteNbBalle = QString("Nombre de balle(s) restante(s): %1").arg(QString::number(jeuCasseBrique->getNbBalle()));
+
     glClearColor(1,1,1,1); // Couleur à utiliser lorsqu’on va nettoyer la fenetre ( = le fond)
 
     // Réinitialisation du tampon de couleur
@@ -73,7 +75,7 @@ void Jeu::paintGL()
     glScalef(1.25f,1.25f,1.0f);
     jeuCasseBrique->affichage();
     glColor3f(0,0,0);
-    renderText(270, 35, "Casse brique", QFont( "Helvetica", 20, QFont::Bold, TRUE ));
+    renderText(270, 35, "Casse-briques", QFont( "Helvetica", 20, QFont::Bold, TRUE ));
     renderText(0, 275, m_TexteNbBalle, QFont( "lucida", 10, QFont::Bold, TRUE ));
     renderText(325, 275, m_TexteLevel, QFont( "lucida", 10, QFont::Bold, TRUE ));
     renderText(575, 275, m_TexteScore, QFont( "lucida", 10, QFont::Bold, TRUE ));

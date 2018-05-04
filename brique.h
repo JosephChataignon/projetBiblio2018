@@ -15,10 +15,13 @@ public:
     float getymin(){return ymin_;}
     float getymax(){return ymax_;}
     void displayBrique();
+    bool isPresente(){return presente;}
 private:
     float positionX;
     float positionY;
     float positionZ;
+
+    bool presente;
 
     float xmin_, xmax_,ymin_,ymax_;
 
