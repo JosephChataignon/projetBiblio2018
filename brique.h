@@ -14,8 +14,11 @@ public:
     float getxmax(){return xmax_;}
     float getymin(){return ymin_;}
     float getymax(){return ymax_;}
+    float getX(){return positionX;}
+    float getY(){return positionY;}
     void displayBrique();
-    bool isPresente(){return presente;}
+    bool isPresente(){ return presente; }
+    void setPresente(bool b){ presente=b; }
 private:
     float positionX;
     float positionY;

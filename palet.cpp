@@ -9,7 +9,6 @@ palet::palet(float x, float y, float z)
 
 void palet::displayPalet()
 {
-    qInfo() << "position X du palet : "<<positionX;
     glPushMatrix();
     glTranslatef(positionX,positionY,positionZ);
     GLfloat color[] = {0.0f,1.0f,0.2f, 1.0f};

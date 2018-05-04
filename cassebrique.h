@@ -17,6 +17,7 @@ public:
     void animation(float vX);
     void nouvelleBalle();
     void nouveauNiveau();
+    void rebondBrique(brique* b, float xBalle, float yBalle);
 
     int getNbBalle(){return nbBalle;}
     void setNbBalle(int x){nbBalle = x;}

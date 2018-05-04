@@ -1,5 +1,5 @@
 #include "cassebrique.h"
-
+#include <QDebug>
 
 cassebrique::cassebrique(){
     tabMur.push_back(new mur(murGauche,murHaut,0,true));
@@ -47,7 +47,7 @@ void cassebrique::animation(float vX){
     xBalle += vitesseBalleX;
     yBalle += vitesseBalleY;
 
-    // Collisions de la balle avec les murs et le palet
+    // Collisions de la balle avec les murs, le palet et les briques
     if( yBalle+5 >= murHaut-5 ){ vitesseBalleY = -vitesseBalleY; }
     if( xBalle+5 >= murDroite-5 ){ vitesseBalleX = -vitesseBalleX; }
     if( xBalle-5 <= murGauche+15 ){ vitesseBalleX = -vitesseBalleX; }
@@ -61,7 +61,13 @@ void cassebrique::animation(float vX){
         yBalle=-65;
         nouvelleBalle();
     }
-    //TODO - collision avec les briques
+    bool aRebondi = false;
+    for(int i=0;i<tabBrique.size();i++){
+       if(tabBrique[i]->isPresente()){
+           rebondBrique(tabBrique[i],xBalle,yBalle);
+       }
+    }
+
     current_balle->setXBalle(xBalle);
     current_balle->setYBalle(yBalle);
 }
@@ -82,5 +88,22 @@ void cassebrique::nouveauNiveau(){
         for(int i=0;i<10;i++){
            tabBrique.push_back(new brique(-155+30*i,65-j*10,0,0.0f,30,0.0f,10));
         }
+    }
+}
+
+void cassebrique::rebondBrique(brique* b, float xBalle, float yBalle){
+    float xmin = b->getX(); float xmax = b->getX()+30;
+    float ymin = b->getY(); float ymax = b->getY()+30;
+    bool rebond = false;
+    if(yBalle+5>=ymin && yBalle+5<ymax && xBalle>xmin && xBalle<xmax){
+        vitesseBalleY = -vitesseBalleY;
+        rebond = true;
+    }
+
+
+    if(rebond){
+        b->setPresente(false);
+        score_ += 1;
+        //TODO - vérifier si c'est la dernière brique du niveau
     }
 }
