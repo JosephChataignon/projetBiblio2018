@@ -8,14 +8,20 @@
 class mur
 {
 public:
+    //constructeur
     mur(float x, float y, float z, bool sens, bool murBas=false);
+    //affichage du mur
     void displayMur();
 private:
+    //coordonnées du mur
     float positionX;
     float positionY;
     float positionZ;
+    //sens du mur (allongé suivant X ou suivant Y)
     bool sens;
+    //indique si c'est un mur qui détruit la balle (uniquement le mur du bas normalement)
     bool destruction;
+    //dimensions du mur
     float x,y;
 };
 

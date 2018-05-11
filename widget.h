@@ -21,24 +21,28 @@ class Widget : public QWidget
     Q_OBJECT
 
 public:
+    //constructeur
     explicit Widget(QWidget *parent = 0);
+    //getters & setters
     void setVect(Point v){ vect = v; }
     cv::Point getVect(){ return vect; }
+    //détection de l'appui sur les touches du clavier
     void keyPressEvent(QKeyEvent * event);
+    //destructeur
     ~Widget();
 
 
 private:
-    Ui::Widget *ui;
-    Mat frame;
-    QTimer* time;
-    gestionCam *cam;
-    cv::Point vect;
-    QTimer* timeAnimation;
+    Ui::Widget *ui;     //modèle de l'interface graphique
+    Mat frame;          //objet Mat contenant 1 image à analyser
+    QTimer* time;       //timer de capture d'image
+    gestionCam *cam;    //objet représentant la caméra
+    cv::Point vect;     //vecteur contenant les coordonnées de déplacement de la main
+    QTimer* timeAnimation;  //timer d'animation du jeu
 
 private slots:
-    void animation();
-    void video();
+    void animation();   //animation du jeu (appelée à chaque tick du timer)
+    void video();       //capture et analyse d'une image, et affichage dans la fenêtre
 };
 
 #endif // WIDGET_H

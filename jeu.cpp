@@ -36,11 +36,13 @@ void Jeu::initializeGL()
     //Activation de la lumiere dans OpenGL et de la lampe
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
+
+    //initialisation des variables du jeu
     jeuCasseBrique=new cassebrique();
     vitesseBalleY = 5;
+    //la balle commence avec un angle aléatoire
     vitesseBalleX = rand()%5-2.5;
-
-    if(vitesseBalleX==0){vitesseBalleX+=1;}
+    if(vitesseBalleX==0){vitesseBalleX+=1;} //cet angle ne doit pas être nul
 }
 
 

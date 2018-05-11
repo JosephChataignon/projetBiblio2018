@@ -21,11 +21,11 @@ public:
     void setXBalle(float x){positionX = x;}
     void setYBalle(float y){positionY = y;}
 private:
-    float positionX;
-    float positionY;
-    float positionZ;
-    GLdouble radius;
-    GLUquadric * m_balle = nullptr;
+    float positionX;    //coordonnée X de la balle
+    float positionY;    //coordonnée Y de la balle
+    float positionZ;    //coordonnée Z de la balle
+    GLdouble radius;    //rayon de la balle
+    GLUquadric * m_balle = nullptr; //quadrique associée à la balle
 };
 
 #endif // BALLE_H

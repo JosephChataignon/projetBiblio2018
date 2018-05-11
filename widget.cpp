@@ -18,54 +18,45 @@ Widget::Widget(QWidget *parent) :
     time->start(20);
 }
 
-void Widget::keyPressEvent(QKeyEvent *event)
-{
+void Widget::keyPressEvent(QKeyEvent *event){
     switch(event->key())    {
         // Sortie de l'application
-
-
-        case Qt::Key_Escape:
-        {
+        case Qt::Key_Escape: {
             close();
             break;
         }
-        case Qt::Key_Left:
-        {
+        case Qt::Key_Left: {
             cv::Point p;
             p.x=-1;
             //ui->widgetJeu->setPos(p);
             break;
         }
-        case Qt::Key_Right:
-        {
+        case Qt::Key_Right: {
             cv::Point p ;
             p.x=1;
             //ui->widgetJeu->setPos(p);
             break;
         }
-        // Cas par defaut
-        default:
-        {
+        // Cas par défaut
+        default: {
             event->ignore();
             return;
         }
     }
-    // Acceptation de l'evenement et mise a jour de la scene
+    // Acceptation de l'évènement et mise a jour de la scene
     event->accept();
 }
 
 
-Widget::~Widget()
-{
+Widget::~Widget(){
     delete ui;
 }
-void Widget::animation()
-{
+
+void Widget::animation(){
     ui->widgetJeu->getJeuCasseBrique()->animation((float)cam->getVect().x);
 }
 
-void Widget::video()
-{
+void Widget::video(){
 
     frame = cam->imageVideo();
     this->setVect(cam->getVect());

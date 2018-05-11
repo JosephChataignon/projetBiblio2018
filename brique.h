@@ -9,25 +9,31 @@
 class brique
 {
 public:
+    //constructeur
     brique(float x, float y, float z, float xmin, float xmax, float ymin, float ymax);
+    //getters & setters
     float getxmin(){return xmin_;}
     float getxmax(){return xmax_;}
     float getymin(){return ymin_;}
     float getymax(){return ymax_;}
     float getX(){return positionX;}
     float getY(){return positionY;}
-    void displayBrique();
     bool isPresente(){ return presente; }
     void setPresente(bool b){ presente=b; }
+
+    //affichage de la brique
+    void displayBrique();
+
 private:
-    float positionX;
-    float positionY;
-    float positionZ;
+    float positionX;    //coordonnée de la brique sur l'axe X
+    float positionY;    //coordonnée de la brique sur l'axe Y
+    float positionZ;    //coordonnée de la brique sur l'axe Z
 
-    bool presente;
+    bool presente;      //indique si la brique a déjà été détruite ou non
 
-    float xmin_, xmax_,ymin_,ymax_;
+    float xmin_, xmax_, ymin_, ymax_; //dimensions de la brique
 
+    // Image de la texture
     QImage tex;
     // Identifiant de texture
     GLuint m_TextureID=1;

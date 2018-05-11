@@ -52,9 +52,9 @@ void cassebrique::animation(float vX){
     yBalle += vitesseBalleY;
 
     // Collisions de la balle avec les murs, le palet et les briques
-    if( yBalle+5 >= murHaut-5 ){ vitesseBalleY = -vitesseBalleY; }
-    if( xBalle+5 >= murDroite-5 ){ vitesseBalleX = -vitesseBalleX; }
-    if( xBalle-5 <= murGauche+15 ){ vitesseBalleX = -vitesseBalleX; }
+    if( yBalle+5 >= murHaut-5    && vitesseBalleY>0 ){ vitesseBalleY = -vitesseBalleY; }
+    if( xBalle+5 >= murDroite-5  && vitesseBalleX>0 ){ vitesseBalleX = -vitesseBalleX; }
+    if( xBalle-5 <= murGauche+15 && vitesseBalleX<0 ){ vitesseBalleX = -vitesseBalleX; }
     if( yBalle-5 <= -70 && yBalle-5 >= -71 && xPalet-xBalle<35 && xPalet-xBalle>-35 && vitesseBalleY<0 ){
         vitesseBalleY = -vitesseBalleY;
         vitesseBalleX += (xBalle-xPalet)*0.5;
@@ -65,7 +65,6 @@ void cassebrique::animation(float vX){
         yBalle=-65;
         nouvelleBalle();
     }
-    bool aRebondi = false;
     for(int i=0;i<tabBrique.size();i++){
        if(tabBrique[i]->isPresente()){
            rebondBrique(tabBrique[i],xBalle,yBalle);
@@ -101,6 +100,9 @@ void cassebrique::nouveauNiveau(){
            tabBrique.push_back(new brique(-155+30*i,65-j*10,0,0.0f,30,0.0f,10));
         }
     }
+    for(int i=0;i<tabBrique.size();i++){//pour avoir seulement les briques de la partie gauche
+        if(tabBrique[i]->getX()>20){tabBrique[i]->setPresente(false);}
+    }
 }
 
 
@@ -108,8 +110,17 @@ void cassebrique::rebondBrique(brique* b, float xBalle, float yBalle){
     float xmin = b->getX(); float xmax = b->getX()+30;
     float ymin = b->getY(); float ymax = b->getY()+30;
     bool rebond = false;
-    if(yBalle+5>=ymin && yBalle+5<ymax && xBalle>xmin && xBalle<xmax){
+    if(yBalle+5>=ymin && yBalle+5<ymax && xBalle>xmin && xBalle<xmax && vitesseBalleY>0){
         vitesseBalleY = -vitesseBalleY;
+        rebond = true;
+    }else if(yBalle-5<=ymax && yBalle-5>ymin && xBalle>xmin && xBalle<xmax && vitesseBalleY<0){
+        vitesseBalleY = -vitesseBalleY;
+        rebond = true;
+    }else if(xBalle+5>=xmin && xBalle+5<xmin+10 && yBalle>ymin && yBalle<ymax && vitesseBalleX>0){
+        vitesseBalleX = -vitesseBalleX;
+        rebond = true;
+    }else if(xBalle-5<=xmax && xBalle-5<xmax-10 && yBalle>ymin && yBalle<ymax && vitesseBalleX<0){
+        vitesseBalleX = -vitesseBalleX;
         rebond = true;
     }
 
