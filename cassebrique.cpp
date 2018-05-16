@@ -122,12 +122,18 @@ void cassebrique::rebondBrique(brique* b, float xBalle, float yBalle){
     }else if(xBalle-5<=xmax && xBalle-5<xmax-10 && yBalle>ymin && yBalle<ymax && vitesseBalleX<0){
         vitesseBalleX = -vitesseBalleX;
         rebond = true;
-    }
+    }//TODO - rebond coins
 
 
     if(rebond){
         b->setPresente(false);
         score_ += 1;
         //TODO - vérifier si c'est la dernière brique du niveau
+        bool derniere = false;
+        for(int i=0;i<tabBrique.size();i++){
+           if(tabBrique[i]->isPresente()){
+               rebondBrique(tabBrique[i],xBalle,yBalle);
+           }
+        }
     }
 }
