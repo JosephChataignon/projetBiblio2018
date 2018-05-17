@@ -4,6 +4,7 @@
 #include <GL/glu.h>
 #include <QColor>
 #include <QtGui/qopengl.h>
+#include <QImage>
 
 class mur
 {
@@ -23,6 +24,11 @@ private:
     bool destruction;
     //dimensions du mur
     float x,y;
+
+    // Image de la texture
+    QImage tex;
+    // Identifiant de texture
+    GLuint m_TextureID=0;
 };
 
 #endif // MUR_H

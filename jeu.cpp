@@ -11,13 +11,6 @@ Jeu::Jeu(QWidget *parent) : QGLWidget(parent) {
     setFixedSize(700, 300);
     move(QApplication::desktop()->screen()->rect().center() - rect().center());
 
-
-    posCamX_=0.0f;
-    posCamY_=0.7f;
-    posCamZ_=10.1f;
-
-    vitessePalet = 0;
-
 }
 
 // Fonction d'initialisation
@@ -37,6 +30,14 @@ void Jeu::initializeGL()
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
 
+
+
+    posCamX_=2.0f;
+    posCamY_=1.75f;
+    posCamZ_=145.0f;
+
+    vitessePalet = 0;
+
     //initialisation des variables du jeu
     jeuCasseBrique=new cassebrique();
     vitesseBalleY = 5;
@@ -55,8 +56,9 @@ void Jeu::resizeGL(int width, int height)
     // Définition de la matrice de projection
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glOrtho(-350.0f * (16/9), 350.0f * (16/9), -150.0f, 150.0f, -50.0f,50.0f);
-
+    //glOrtho(-350.0f * (16/9), 350.0f * (16/9), -150.0f, 150.0f, -50.0f,50.0f);
+    //glFrustum(-350.0f * (16/9), 350.0f * (16/9), -150.0f, 150.0f, 0.1f,3.0f);
+    gluPerspective(75.0f, 700/300, 0.01f , 150.0f );
 }
 
 // Fonction d'affichage
@@ -73,8 +75,7 @@ void Jeu::paintGL()
     // Réinitialisation de la matrice courante
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    gluLookAt(posCamX_,posCamY_,posCamZ_,0,0,0,0,1,0);
-    glScalef(1.25f,1.25f,1.0f);
+    gluLookAt(posCamX_,posCamY_,posCamZ_,0,0,1,0,1,0);
     jeuCasseBrique->affichage();
     if(pause_){
         pause();
@@ -95,10 +96,10 @@ void Jeu::paintGL()
     }
 
     glColor3f(0,0,0);
-    renderText(270, 35, "Casse-briques", QFont( "Helvetica", 20, QFont::Bold, TRUE ));
-    renderText(0, 275, m_TexteNbBalle, QFont( "lucida", 10, QFont::Bold, TRUE ));
-    renderText(325, 275, m_TexteLevel, QFont( "lucida", 10, QFont::Bold, TRUE ));
-    renderText(575, 275, m_TexteScore, QFont( "lucida", 10, QFont::Bold, TRUE ));
+    renderText(270, 25, "Casse-briques", QFont( "Helvetica", 18, QFont::Bold, TRUE ));
+    renderText(0, 285, m_TexteNbBalle, QFont( "lucida", 10, QFont::Bold, TRUE ));
+    renderText(325, 285, m_TexteLevel, QFont( "lucida", 10, QFont::Bold, TRUE ));
+    renderText(575, 285, m_TexteScore, QFont( "lucida", 10, QFont::Bold, TRUE ));
 
 }
 
@@ -112,7 +113,7 @@ void Jeu::rebondPalet(float xPalet, float xBalle){
 }
 
 void Jeu::pause(){
-    std::this_thread::sleep_for(std::chrono::milliseconds(3000));
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 }
 
 

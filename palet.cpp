@@ -16,18 +16,18 @@ void palet::displayPalet()
     glBegin(GL_QUADS);
     glColor3ub(0,0,255); // bleu
     glNormal3f(0.0,0.0,1.0);
-    glVertex3f(-30.0f, 0.0f, 1.0f);
-    glVertex3f( 30.0f, 0.0f, 1.0f);
-    glVertex3f( 30.0f, 4.0f, 1.0f);
-    glVertex3f(-30.0f, 4.0f, 1.0f);
+    glVertex3f(-30.0f, 0.0f, 10.0f);
+    glVertex3f( 30.0f, 0.0f, 10.0f);
+    glVertex3f( 30.0f, 4.0f, 10.0f);
+    glVertex3f(-30.0f, 4.0f, 10.0f);
 
 
     glColor3ub(255,0,0);// rouge
     glNormal3f(1.0,0.0,0.0);
     glVertex3f(30.0f, 0.0f, 0.0f);
     glVertex3f(30.0f, 4.0f,0.0f);
-    glVertex3f( 30.0f, 4.0f, 1.0f);
-    glVertex3f( 30.0f, 0.0f, 1.0f);
+    glVertex3f( 30.0f, 4.0f, 10.0f);
+    glVertex3f( 30.0f, 0.0f, 10.0f);
 
     glColor3ub(0,255,0); // vert
     glNormal3f(0.0,0.0,-1.0);
@@ -38,24 +38,24 @@ void palet::displayPalet()
 
     glColor3ub(0,255,255);//cyan
     glNormal3f(0.0,-1.0,0.0);
-    glVertex3f(-30.0f, 0.0f, 1.0f);
+    glVertex3f(-30.0f, 0.0f, 10.0f);
     glVertex3f( -30.0f, 0.0f, 0.0f);
     glVertex3f( 30.0f, 0.0f,0.0f);
-    glVertex3f(30.0f, 0.0f, 1.0f);
+    glVertex3f(30.0f, 0.0f, 10.0f);
 
     glColor3ub(255,255,0);//jaune
     glNormal3f(0.0,1.0,0.0);
     glVertex3f( -30.0f, 4, 0.0f);
     glVertex3f( 30.0f, 4, 0.0f);
-    glVertex3f( 30.0f, 4, 1.0f);
-    glVertex3f( -30.0f, 4, 1.0f);
+    glVertex3f( 30.0f, 4, 10.0f);
+    glVertex3f( -30.0f, 4, 10.0f);
 
     glColor3ub(255,0,255);// magenta
     glNormal3f(-1.0,0.0,0.0);
-    glVertex3f( -30.0f, 0.0f, 1.0f);
+    glVertex3f( -30.0f, 0.0f, 10.0f);
     glVertex3f( -30.0f, 0.0f,0.0f);
     glVertex3f( -30.0f, 4,0.0f);
-    glVertex3f( -30.0f, 4, 1.0f);
+    glVertex3f( -30.0f, 4, 10.0f);
     glEnd();
     glPopMatrix();
 }

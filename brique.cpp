@@ -25,39 +25,40 @@ void brique::displayBrique()
     glPushMatrix();
     glDisable(GL_LIGHTING);
     glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, m_TextureID);
     glTranslatef(positionX,positionY,positionZ);
 
     glBegin(GL_QUADS);
     glColor3ub(255,255,255);
-    glTexCoord2f(0, 0);  glVertex3f(xmin_,ymin_, 1.0f);
-    glTexCoord2f(1, 0);  glVertex3f( xmax_, ymin_, 1.0f);
-    glTexCoord2f(1, 1);  glVertex3f( xmax_, ymax_, 1.0f);
-    glTexCoord2f(0, 1);  glVertex3f(xmin_, ymax_, 1.0f);
+    glTexCoord2f(0, 0);  glVertex3f(xmin_,ymin_, 10.0f);
+    glTexCoord2f(1, 0);  glVertex3f( xmax_, ymin_, 10.0f);
+    glTexCoord2f(1, 1);  glVertex3f( xmax_, ymax_, 10.0f);
+    glTexCoord2f(0, 1);  glVertex3f(xmin_, ymax_, 10.0f);
 
     glVertex3f(xmax_, ymin_, 0.0f);
     glVertex3f(xmax_, ymax_,0.0f);
-    glVertex3f( xmax_, ymax_, 1.0f);
-    glVertex3f( xmax_, ymin_, 1.0f);
+    glVertex3f( xmax_, ymax_, 10.0f);
+    glVertex3f( xmax_, ymin_, 10.0f);
 
     glVertex3f(xmax_, ymax_, 0.0f);
     glVertex3f(xmin_, ymax_, 0.0f);
     glVertex3f( xmin_, ymin_,0.0f);
     glVertex3f( xmax_,ymin_,0.0f);
 
-    glVertex3f(xmin_, ymin_, 1.0f);
+    glVertex3f(xmin_, ymin_, 10.0f);
     glVertex3f( xmin_, ymin_, 0.0f);
     glVertex3f( xmax_, ymin_,0.0f);
-    glVertex3f(xmax_, ymin_, 1.0f);
+    glVertex3f(xmax_, ymin_, 10.0f);
 
     glVertex3f( xmin_, ymax_, 0.0f);
     glVertex3f( xmax_, ymax_, 0.0f);
-    glVertex3f( xmax_, ymax_, 1.0f);
-    glVertex3f( xmin_, ymax_, 1.0f);
+    glVertex3f( xmax_, ymax_, 10.0f);
+    glVertex3f( xmin_, ymax_, 10.0f);
 
-    glVertex3f(xmin_,ymin_, 1.0f);
+    glVertex3f(xmin_,ymin_, 10.0f);
     glVertex3f(xmin_, ymin_,0.0f);
     glVertex3f( xmin_, ymax_,0.0f);
-    glVertex3f( xmin_, ymax_, 1.0f);
+    glVertex3f( xmin_, ymax_, 10.0f);
 
     glEnd();
     glDisable(GL_TEXTURE_2D);
