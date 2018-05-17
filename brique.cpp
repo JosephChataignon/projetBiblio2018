@@ -1,8 +1,7 @@
 #include "brique.h"
 #include <QImage>
 #include <QGLWidget>
-brique::brique(float x, float y, float z, float xmin, float xmax, float ymin, float ymax)
-{
+brique::brique(float x, float y, float z, float xmin, float xmax, float ymin, float ymax, int type){
     positionX=x;
     positionY=y;
     positionZ=z;
@@ -10,7 +9,21 @@ brique::brique(float x, float y, float z, float xmin, float xmax, float ymin, fl
     ymin_=ymin;
     xmax_=xmax;
     ymax_=ymax;
-    tex = QGLWidget::convertToGLFormat(QImage(QString(":/image/brique.jpg")));
+    type_=type;
+    /*switch(type){
+        case 0: {*/
+            tex = QGLWidget::convertToGLFormat(QImage(QString(":/image/brique.jpg")));
+        /*}
+        case 1: {
+            tex = QGLWidget::convertToGLFormat(QImage(QString(":/image/extraballe.jpg")));
+        }
+        case 2: {
+            tex = QGLWidget::convertToGLFormat(QImage(QString(":/image/or.jpg")));
+        }
+        case 3: {
+            tex = QGLWidget::convertToGLFormat(QImage(QString(":/image/tnt.jpg")));
+        }
+    }*/
     glGenTextures(1, &m_TextureID);
     glBindTexture(GL_TEXTURE_2D, m_TextureID);
     glTexImage2D(GL_TEXTURE_2D, 0, 3, tex.width(), tex.height(), 0, GL_RGBA , GL_UNSIGNED_BYTE, tex.bits());

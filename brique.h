@@ -10,7 +10,7 @@ class brique
 {
 public:
     //constructeur
-    brique(float x, float y, float z, float xmin, float xmax, float ymin, float ymax);
+    brique(float x, float y, float z, float xmin, float xmax, float ymin, float ymax, int type);
     //getters & setters
     float getxmin(){return xmin_;}
     float getxmax(){return xmax_;}
@@ -28,6 +28,7 @@ private:
     float positionX;    //coordonnée de la brique sur l'axe X
     float positionY;    //coordonnée de la brique sur l'axe Y
     float positionZ;    //coordonnée de la brique sur l'axe Z
+    int type_; //type de brique: 0 = normale, 1 = extraballe, 2 = or, 3 = TNT
 
     bool presente;      //indique si la brique a déjà été détruite ou non
 

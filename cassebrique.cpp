@@ -36,11 +36,11 @@ void cassebrique::affichage(){
 
 void cassebrique::animation(float vX){
     // Mouvement du palet
-    if(vitessePalet > 0){vitessePalet -= 2; }else{ vitessePalet += 2; }
+    if(vitessePalet > 1){vitessePalet -= 2; }else if(vitessePalet < -1){ vitessePalet += 2; }
     vitessePalet +=vX;
-    if(vitessePalet > 25){ vitessePalet = 25; }else if(vitessePalet < -25){ vitessePalet = -25; }
+    if(vitessePalet > 20){ vitessePalet = 20; }else if(vitessePalet < -25){ vitessePalet = -25; }
     if(( barre->getXPalet()-30+vitessePalet <= murGauche )||( barre->getXPalet()+30+vitessePalet >= murDroite )){
-        vitessePalet = -vitessePalet;
+        vitessePalet = -vitessePalet/2;
     }
     barre->movePalet(vitessePalet);
 
@@ -102,17 +102,17 @@ void cassebrique::nouveauNiveau(){
     tabBrique.clear();
     for(int j=0;j<8;j++){
         for(int i=0;i<10;i++){
-           tabBrique.push_back(new brique(-155+30*i,65-j*10,0,0.0f,30,0.0f,10));
+           tabBrique.push_back(new brique(-155+30*i,65-j*10,0,0.0f,30,0.0f,10,i%4));
         }
     }
     //pour avoir seulement la brique du milieu
-    for(int i=0;i<tabBrique.size();i++){
-        if(i != 45){tabBrique[i]->setPresente(false);}
-    }
-    //pour avoir seulement les briques de la partie gauche
     /*for(int i=0;i<tabBrique.size();i++){
-        if(tabBrique[i]->getX()>20){tabBrique[i]->setPresente(false);}
+        if(i != 45){tabBrique[i]->setPresente(false);}
     }*/
+    //pour avoir seulement les briques de la partie gauche
+    for(int i=0;i<tabBrique.size();i++){
+        if(tabBrique[i]->getX()>20){tabBrique[i]->setPresente(false);}
+    }
 }
 
 
