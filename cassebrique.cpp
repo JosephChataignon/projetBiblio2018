@@ -59,28 +59,33 @@ void cassebrique::animation(float vX){
         vitesseBalleY = -vitesseBalleY;
         vitesseBalleX += (xBalle-xPalet)*0.5;
     }
-    if( yBalle-5 <= murBas+5 ){
-        nbBalle -= 1;
-        xBalle=0;
-        yBalle=-65;
-        nouvelleBalle();
-    }
+
+    bool aRebondi = false;
     for(int i=0;i<tabBrique.size();i++){
        if(tabBrique[i]->isPresente()){
-           rebondBrique(tabBrique[i],xBalle,yBalle);
+           if(rebondBrique(tabBrique[i],xBalle,yBalle)){
+               aRebondi = true;
+           }
        }
     }
 
-    current_balle->setXBalle(xBalle);
-    current_balle->setYBalle(yBalle);
+    if( yBalle-5 <= murBas+5 ){
+        nbBalle -= 1;
+        nouvelleBalle();
+    }else if(!aRebondi){
+        current_balle->setXBalle(xBalle);
+        current_balle->setYBalle(yBalle);
+    }
 
 }
 
 void cassebrique::nouvelleBalle(){
 
     newBall=true;
+    current_balle->setXBalle(0);
+    current_balle->setYBalle(-65);
     vitessePalet=0;
-    vitesseBalleY = 5;
+    vitesseBalleY = 2 + niveau_;
     vitesseBalleX = rand()%5-2.5;
     if(vitesseBalleX==0){vitesseBalleX+=1;}
     barre->setXPalet(0);
@@ -100,15 +105,20 @@ void cassebrique::nouveauNiveau(){
            tabBrique.push_back(new brique(-155+30*i,65-j*10,0,0.0f,30,0.0f,10));
         }
     }
-    for(int i=0;i<tabBrique.size();i++){//pour avoir seulement les briques de la partie gauche
-        if(tabBrique[i]->getX()>20){tabBrique[i]->setPresente(false);}
+    //pour avoir seulement la brique du milieu
+    for(int i=0;i<tabBrique.size();i++){
+        if(i != 45){tabBrique[i]->setPresente(false);}
     }
+    //pour avoir seulement les briques de la partie gauche
+    /*for(int i=0;i<tabBrique.size();i++){
+        if(tabBrique[i]->getX()>20){tabBrique[i]->setPresente(false);}
+    }*/
 }
 
 
-void cassebrique::rebondBrique(brique* b, float xBalle, float yBalle){
-    float xmin = b->getX(); float xmax = b->getX()+30;
-    float ymin = b->getY(); float ymax = b->getY()+30;
+bool cassebrique::rebondBrique(brique* b, float xBalle, float yBalle){
+    float xmin = b->getX(); float xmax = xmin+30;
+    float ymin = b->getY(); float ymax = ymin+10;
     bool rebond = false;
     if(yBalle+5>=ymin && yBalle+5<ymax && xBalle>xmin && xBalle<xmax && vitesseBalleY>0){
         vitesseBalleY = -vitesseBalleY;
@@ -116,10 +126,10 @@ void cassebrique::rebondBrique(brique* b, float xBalle, float yBalle){
     }else if(yBalle-5<=ymax && yBalle-5>ymin && xBalle>xmin && xBalle<xmax && vitesseBalleY<0){
         vitesseBalleY = -vitesseBalleY;
         rebond = true;
-    }else if(xBalle+5>=xmin && xBalle+5<xmin+10 && yBalle>ymin && yBalle<ymax && vitesseBalleX>0){
+    }else if(xBalle+5>=xmin && xBalle+5<xmin+5 && yBalle>ymin && yBalle<ymax && vitesseBalleX>0){
         vitesseBalleX = -vitesseBalleX;
         rebond = true;
-    }else if(xBalle-5<=xmax && xBalle-5<xmax-10 && yBalle>ymin && yBalle<ymax && vitesseBalleX<0){
+    }else if(xBalle-5<=xmax && xBalle-5>xmax-5 && yBalle>ymin && yBalle<ymax && vitesseBalleX<0){
         vitesseBalleX = -vitesseBalleX;
         rebond = true;
     }//TODO - rebond coins
@@ -129,11 +139,20 @@ void cassebrique::rebondBrique(brique* b, float xBalle, float yBalle){
         b->setPresente(false);
         score_ += 1;
         //TODO - vérifier si c'est la dernière brique du niveau
-        bool derniere = false;
+        bool derniere = true;
         for(int i=0;i<tabBrique.size();i++){
            if(tabBrique[i]->isPresente()){
-               rebondBrique(tabBrique[i],xBalle,yBalle);
+               derniere = false;
+               break;
            }
         }
+        if(derniere){
+            qInfo("fin niveau");
+            niveau_ += 1;
+            nouvelleBalle();
+            nouveauNiveau();
+        }
     }
+
+    return rebond;
 }

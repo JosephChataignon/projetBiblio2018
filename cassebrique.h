@@ -23,7 +23,7 @@ public:
     // réinitialise les briques pour un nouveau niveau
     void nouveauNiveau();
     // vérifie le rebond de la balle sur une brique en fonction des coordonnées de la balle
-    void rebondBrique(brique* b, float xBalle, float yBalle);
+    bool rebondBrique(brique* b, float xBalle, float yBalle);
 
     // getters & setters
     bool getNewBall(){return newBall;}
