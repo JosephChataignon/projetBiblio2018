@@ -17,7 +17,7 @@ public:
     // appelle les fonctions d'affichage de chaque composant
     void affichage();
     // calcule le nouvel état du jeu à chaque tick (vX est la vitesse horizontale détectée par la caméra)
-    void animation(float vX);
+    void animation(float vX, float vY);
     // met une nouvelle balle en jeu
     void nouvelleBalle();
     // réinitialise les briques pour un nouveau niveau

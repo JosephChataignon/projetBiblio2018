@@ -34,14 +34,15 @@ void cassebrique::affichage(){
 
 }
 
-void cassebrique::animation(float vX){
+void cassebrique::animation(float vX, float vY){
     // Mouvement du palet
     if(vitessePalet > 1){vitessePalet -= 2; }else if(vitessePalet < -1){ vitessePalet += 2; }
     vitessePalet +=vX;
     if(vitessePalet > 20){ vitessePalet = 20; }else if(vitessePalet < -25){ vitessePalet = -25; }
     if(( barre->getXPalet()-30+vitessePalet <= murGauche )||( barre->getXPalet()+30+vitessePalet >= murDroite )){
-        vitessePalet = -vitessePalet/2;
+        vitessePalet = -vitessePalet/2; //rebond sur les murs latéraux
     }
+    if( abs(vY) > abs(vX) ){ vitessePalet = vitessePalet/3; }
     barre->movePalet(vitessePalet);
 
     // Mouvement de la balle
