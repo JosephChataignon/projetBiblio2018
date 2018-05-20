@@ -37,7 +37,7 @@ private:
     // Image de la texture
     QImage tex;
     // Identifiant de texture
-    GLuint m_TextureID/*=1*/;
+    GLuint m_TextureID = 1;
 };
 
 #endif // BRIQUE_H

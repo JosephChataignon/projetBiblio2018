@@ -10,7 +10,7 @@ brique::brique(float x, float y, float z, float xmin, float xmax, float ymin, fl
     xmax_=xmax;
     ymax_=ymax;
     type_=type;
-    m_TextureID = type;
+    //m_TextureID = (GLuint) type;
     switch(type){
         case 0: {
             tex = QGLWidget::convertToGLFormat(QImage(QString(":/image/brique.jpg")));
@@ -23,6 +23,9 @@ brique::brique(float x, float y, float z, float xmin, float xmax, float ymin, fl
         }
         case 3: {
             tex = QGLWidget::convertToGLFormat(QImage(QString(":/image/tnt.jpg")));
+        }
+        default: {
+            tex = QGLWidget::convertToGLFormat(QImage(QString(":/image/brique.jpg")));
         }
     }
     glGenTextures(1, &m_TextureID);
