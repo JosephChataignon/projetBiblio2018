@@ -10,10 +10,11 @@ brique::brique(float x, float y, float z, float xmin, float xmax, float ymin, fl
     xmax_=xmax;
     ymax_=ymax;
     type_=type;
-    /*switch(type){
-        case 0: {*/
+    m_TextureID = type;
+    switch(type){
+        case 0: {
             tex = QGLWidget::convertToGLFormat(QImage(QString(":/image/brique.jpg")));
-        /*}
+        }
         case 1: {
             tex = QGLWidget::convertToGLFormat(QImage(QString(":/image/extraballe.jpg")));
         }
@@ -23,7 +24,7 @@ brique::brique(float x, float y, float z, float xmin, float xmax, float ymin, fl
         case 3: {
             tex = QGLWidget::convertToGLFormat(QImage(QString(":/image/tnt.jpg")));
         }
-    }*/
+    }
     glGenTextures(1, &m_TextureID);
     glBindTexture(GL_TEXTURE_2D, m_TextureID);
     glTexImage2D(GL_TEXTURE_2D, 0, 3, tex.width(), tex.height(), 0, GL_RGBA , GL_UNSIGNED_BYTE, tex.bits());
