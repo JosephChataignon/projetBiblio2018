@@ -2,6 +2,9 @@
     <qresource prefix="/image">
         <file>brique.jpg</file>
         <file>murbleu.jpg</file>
+        <file>extraballe.jpg</file>
+        <file>or.jpg</file>
+        <file>tnt.jpg</file>
     </qresource>
     <qresource prefix="/"/>
 </RCC>
