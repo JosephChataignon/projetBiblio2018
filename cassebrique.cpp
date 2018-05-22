@@ -110,14 +110,7 @@ void cassebrique::nouveauNiveau(){
            tabBrique.push_back(new brique(-155+30*i,65-j*10,0,0.0f,30,0.0f,10,(i)%4));
         }
     }
-    //pour avoir seulement la brique du milieu
-    /*for(int i=0;i<tabBrique.size();i++){
-        if(i != 45){tabBrique[i]->setPresente(false);}
-    }*/
-    //pour avoir seulement les briques de la partie gauche
-    for(int i=0;i<tabBrique.size();i++){
-        if(tabBrique[i]->getX()>20){tabBrique[i]->setPresente(false);}
-    }
+
     //pour faire un niveau aléatoire
     for(int i=0;i<tabBrique.size();i++){
         if(rand()%100 > 80){tabBrique[i]->setPresente(false);}
